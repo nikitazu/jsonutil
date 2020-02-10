@@ -53,8 +53,8 @@ var
 begin
   // quick check parameters
   ErrorMsg := CheckOptions(
-    'hi:o:p',
-    'help input: output: pretty'
+    'hi:o:pv',
+    'help input: output: pretty version'
   );
 
   if ErrorMsg <> '' then begin
@@ -63,14 +63,18 @@ begin
     Exit;
   end;
 
-  // parse parameters
   if HasOption('h', 'help') then begin
     WriteHelpFull;
     Terminate;
     Exit;
   end;
 
-  { add your program here }
+  if HasOption('v', 'version') then begin
+    WriteLn('Version: 0.0.1');
+    Terminate;
+    Exit;
+  end;
+
   if HasOption('i', 'input') then begin
     InPath := GetOptionValue('i', 'input');
     N := TJsonNode.Create;
@@ -134,24 +138,31 @@ begin
   WriteLn;
   WriteLn('  --help');
   WriteLn('    alias -h');
-  WriteLn('    Prints help');
+  WriteLn('    Prints help.');
   WriteLn;
   WriteLn('  --input [input_path]');
   WriteLn('    alias -i'); 
-  WriteLn('    Path to file to read');
+  WriteLn('    Defines path to JSON file to read.');
   WriteLn;
   WriteLn('  --output [output_path]');
   WriteLn('    alias -o');   
-  WriteLn('    Path to file to write');
+  WriteLn('    Defines path to JSON file to write.');
   WriteLn;
   WriteLn('  --pretty');
   WriteLn('    alias -p');    
-  WriteLn('    Makes output pretty printed');
+  WriteLn('    Sets output format to [pretty printing].');
+  WriteLn;      
+  WriteLn('  --version');
+  WriteLn('    alias -v');
+  WriteLn('    Prints program version.');
   WriteLn;
 end;
 
 var
   Application: TJsonUtil;
+
+{$R *.res}
+
 begin
   Application:=TJsonUtil.Create(nil);
   Application.Title:='Json Util';
