@@ -21,6 +21,7 @@ uses
   Classes,
   SysUtils,
   CustApp,
+  LazUTF8,
   { 3rd Party }
   JsonTools
   { you can add units after this };
@@ -95,7 +96,7 @@ begin
     OutStream := TFileStream.Create(OutPath, fmCreate);
     try
       OutStream.Position := 0;
-      OutStream.WriteAnsiString(Buffer);
+      OutStream.Write(PChar(Buffer)^, Length(Buffer));
     finally
       FreeAndNil(OutStream);
     end;

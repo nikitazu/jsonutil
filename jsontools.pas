@@ -9,7 +9,7 @@
 (********************************************************)
 unit JsonTools;
 
-{$mode delphi}{$H+}
+{$mode objfpc}{$H+}{$modeSwitch advancedRecords}
 
 interface
 
@@ -26,7 +26,7 @@ type
 { TJsonNodeKind is 1 of 6 possible values described below }
 
   TJsonNodeKind = (
-    { Object such as { }
+    // Object such as { }
     nkObject,
     { Array such as [ ] }
     nkArray,
