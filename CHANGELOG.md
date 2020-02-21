@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.2]
+
 ### Added
 
 - Help mode.
@@ -14,3 +16,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Output to file.
 - JSON pretty printing mode.
 - Program version printing mode.
+- Set return code 1 when error: Unable to open file.

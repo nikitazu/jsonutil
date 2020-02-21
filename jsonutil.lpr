@@ -70,7 +70,7 @@ begin
   end;
 
   if HasOption('v', 'version') then begin
-    WriteLn('Version: 0.0.1');
+    WriteLn('Version: 0.0.2');
     Terminate;
     Exit;
   end;
@@ -78,7 +78,18 @@ begin
   if HasOption('i', 'input') then begin
     InPath := GetOptionValue('i', 'input');
     N := TJsonNode.Create;
-    N.LoadFromFile(InPath);
+
+    try
+      N.LoadFromFile(InPath);
+    except
+      on E: EFOpenError do begin
+        WriteLn('Unable to open file "' + InPath + '".');
+        FreeAndNil(N);
+        ExitCode := 1;
+        Terminate;
+        Exit;
+      end;
+    end;
 
     if HasOption('p', 'pretty') then begin
       Buffer := N.Value;

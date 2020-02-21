@@ -16,7 +16,7 @@
     </General>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
-      <RevisionNr Value="1"/>
+      <RevisionNr Value="2"/>
       <StringTable CompanyName="Nikita B. Zuev" LegalCopyright="Nikita B. Zuev" ProductName="Json Util"/>
     </VersionInfo>
     <BuildModes Count="1">
